@@ -10,11 +10,12 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
 
-const useStyles = makeStyles( {
+const useStyles = makeStyles({
   table: {
     minWidth: 650,
+    background: '#ebebe0',
   },
-} )
+})
 
 const ContactList = () => {
   const classes = useStyles()
@@ -24,7 +25,7 @@ const ContactList = () => {
       <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="simple table">
               <TableHead>
-                  <TableRow>
+                  <TableRow variant="h4">
                       <TableCell align="center">Name</TableCell>
                       <TableCell align="center">Last Name</TableCell>
                       <TableCell align="center">Phone</TableCell>

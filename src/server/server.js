@@ -16,44 +16,42 @@ server.use( bodyParser.json( { limit: '50mb', extended: true } ) )
 server.use( setHeaders )
 server.use( express.static( path.join( __dirname, '../build' ) ) )
 server.get( '/', function ( req, res ) {
-  res.sendFile(path.join(__dirname, '../build', 'index.html'))
+  res.sendFile( path.join( __dirname, '../build', 'index.html' ) )
 } )
 server.listen( 9000 )
 // у Леши прописан 9000 но грузится на локалхост3000 ?
 
-// const saveContacts = async ( username, phonenumber, email ) => {
-//   const result = await writeFile(
-//     `${__dirname}/contacts.json`,
-//     JSON.stringify( username, phonenumber, email ),
-//     {
-//       encoding: 'utf8',
-//     }
-//   )
-//   return result
-// }
+const saveContacts = async ( name, lastname, phone, email ) => {
+  const result = await writeFile(
+    './server/contacts.json',
+    JSON.stringify(username, phonenumber, email),
+    {
+      encoding: 'utf8',
+    }
+  )
+  return result
+}
 
-// const getContacts = async () => {
-//   const result = await readFile( `${__dirname}/contacts.json`, {
-//     encoding: 'utf8',
-//   } )
-//     .then( ( data ) => JSON.parse( data ) )
-//     .catch( () => [] )
-//   return result
-// }
+const getContacts = async () => {
+  const result = await readFile( './server/contacts.json', {
+    encoding: 'utf8',
+  } )
+    .then( ( data ) => JSON.parse( data ) )
+    .catch( () => [] )
+  return result
+}
 
-// server.post( '/api/v1/contact', async ( req, res ) => {
-//   const contact = req.body
-//   const oldContacts = await getContacts()
-//   await saveContacts( [ ...oldContacts, contact ] )
-//   res.json( { status: 'success', data: contact } )
-// } )
+server.post( '/api/v1/contact', async ( req, res ) => {
+  const contact = req.body
+  const oldContacts = await getContacts()
+  await saveContacts( [ ...oldContacts, contact ] )
+  res.json( { status: 'success', data: contact } )
+} )
 
-// server.get( '/api/v1/contact', async ( req, res ) => {
-//   const contact = await readFile( `${__dirname}/contacts.json`, {
-//     encoding: 'utf8',
-//   } ).then( ( data ) => JSON.parse( data ) )
-//   res.json({ status: 'success', data: contact })
-// } )
+server.get( '/api/v1/contact', async ( req, res ) => {
+   const contact = await getContacts()
+   res.json({ status: 'success', data: contact })
+} )
 
 // // server.use('/api/', (req, res) => {
 // //   res.status(404)

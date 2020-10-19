@@ -16,7 +16,14 @@ const initialState = {
 export default ( state = initialState, action ) => {
   switch ( action.type ) {
     case CREATE_CONTACT: {
-      return { ...state, contacts: [ { ...state.contacts }, { name: action.name, lastname: action.lastname, phone: action.phone, email: action.email } ] }
+      return {
+         ...state,
+         contacts: [ ...state.contacts, {
+           name: action.name,
+           lastname: action.lastname,
+           phone: action.phone,
+           email: action.email
+          } ] }
     }
 
     default:
@@ -25,11 +32,11 @@ export default ( state = initialState, action ) => {
 }
 
 export function createContact( name, lastname, phone, email ) {
-  return {
+  return ({
     type: CREATE_CONTACT,
     name,
     lastname,
     phone,
     email
-  }
+  })
 }
