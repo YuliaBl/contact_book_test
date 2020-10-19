@@ -1,17 +1,17 @@
 import React from 'react'
 
-import ContactList from './components/contactlist'
-import AddContact from './components/addcontact'
+import ContactList from './contactlist'
+import AddContact from './addcontact'
 
 function Main() {
 
   return (
-    <div className="Main">
-      <main>
-        <AddContact create={create} />
-        <ContactList />
-      </main>
-    </div>
+      <div className="Main">
+          <main>
+              <AddContact />
+              <ContactList />
+          </main>
+      </div>
   )
 }
 
