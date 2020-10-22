@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import Input from '@material-ui/core/Input'
 import FormControl from '@material-ui/core/FormControl'
 import Button from '@material-ui/core/Button'
+import uuid from 'uuid'
 
 const useStyles = makeStyles( ( theme ) => ( {
   margin: {
@@ -22,10 +23,12 @@ const AddContact = () => {
   const classes = useStyles()
 
   const dispatch = useDispatch()
-  const [ name, setName ] = useState()
-  const [ lastname, setLastname ] = useState()
-  const [ phone, setPhone ] = useState()
-  const [ email, setEmail ] = useState()
+  const [ name, setName ] = useState('')
+  const [ lastname, setLastname ] = useState('')
+  const [ phone, setPhone ] = useState('')
+  const [ email, setEmail ] = useState('')
+  const uid = uuid.v4()
+  const [ id, setId ] = useState(uid)
 
   return (
       <div className={classes.root}>
@@ -33,25 +36,27 @@ const AddContact = () => {
               <h2>Add New Contact</h2>
           </main>
           <FormControl className={classes.margin}>
-              <Input id="input" placeholder="Name" value={name} onChange={( e ) => {
+              <Input id="inputname" placeholder="Name" value={name} onChange={( e ) => {
               setName( e.target.value )
               }} />
           </FormControl>
           <FormControl className={classes.margin}>
-              <Input id="input" placeholder="LastName" value={lastname} onChange={( e ) => {
+              <Input id="inputlastname" placeholder="LastName" value={lastname} onChange={( e ) => {
               setLastname( e.target.value )}} />
           </FormControl>
           <FormControl className={classes.margin}>
-              <Input id="input" placeholder="Phone" value={phone} onChange={( e ) => {
+              <Input id="inputphone" placeholder="Phone" value={phone} onChange={( e ) => {
               setPhone( e.target.value )}} />
           </FormControl>
           <FormControl className={classes.margin}>
-              <Input id="input" placeholder="E-mail" value={email} onChange={( e ) => {
+              <Input id="inputemail" placeholder="E-mail" value={email} onChange={( e ) => {
               setEmail( e.target.value )}} />
           </FormControl>
 
           <Button variant="contained" color="primary" onClick={() => {
-                  dispatch( createContact(name, lastname, phone, email))
+                  dispatch(
+                    createContact(id, name, lastname, phone, email))
+                  setId('')
                   setName('')
                   setEmail('')
                   setLastname('')
