@@ -5,7 +5,6 @@ const server = express()
 
 const { readFile, writeFile } = require( 'fs' ).promises
 const setHeaders = (req, res, next) => {
-  res.set('x-skillcrucial-user', '27d0d6ac-09f5-462c-b643-333ad95af382')
   res.set('Access-Control-Expose-Headers', 'X-SKILLCRUCIAL-USER')
   next()
 }

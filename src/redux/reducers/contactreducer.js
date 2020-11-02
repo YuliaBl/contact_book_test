@@ -22,7 +22,7 @@ const initialState = {
 }
 
 export default ( state = initialState, action ) => {
-  switch (action.type) {
+  switch ( action.type ) {
     case CREATE_CONTACT: {
       return {
         ...state,
@@ -41,26 +41,30 @@ export default ( state = initialState, action ) => {
     case DELETE_CONTACT: {
       return {
         ...state,
-        contacts: [
-          state.contacts.filter((it) => {
+                contacts: [
+          ...state.contacts.filter( ( it ) => {
             return it.id !== action.id
-          }),
-        ],
-      }
-    }
+          } ) ]
+      }}
+
     case EDIT_CONTACT: {
       return {
         ...state,
-        contacts: [ state.contacts.map((it) => {
-          return action.contacts.id === it.id ? action.contacts : it
-        })
+        contacts: [ ...state.contacts.map( ( it ) => {
+          return ( it.id === action.id ) ? {
+            ...it,
+            name: action.name,
+            lastname: action.lastname,
+            phone: action.phone,
+            email: action.email,
+          } : it
+             } )
       ]
       }
     }
     default:
       return state
-  }
-}
+}}
 
 export function createContact( id, name, lastname, phone, email ) {
   return ( {
@@ -74,16 +78,19 @@ export function createContact( id, name, lastname, phone, email ) {
 }
 
 export function deleteContact( id ) {
-  return ( {
+  return {
     type: DELETE_CONTACT,
     id
-  } )
+  }
 }
 
-export function editContact(id, contacts) {
+export function editContact( id, name, lastname, phone, email ) {
   return {
     type: EDIT_CONTACT,
     id,
-    contacts
+    name,
+    lastname,
+    phone,
+    email,
   }
 }

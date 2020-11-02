@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { deleteContact } from '../redux/reducers/contactreducer'
@@ -19,7 +19,6 @@ const ContactList = () => {
   const classes = useStyles()
   const dispatch = useDispatch()
   const contacts = useSelector( ( store ) => store.contactreducer.contacts )
-  const id = useSelector( ( store ) => store.contactreducer.contacts.id )
 
   return (
       <TableContainer component={Paper}>
@@ -50,14 +49,14 @@ const ContactList = () => {
                               {it.email}
                           </TableCell>
                           <TableCell component="th" scope="row" align="center">
-                              <EditContactsModal />
+                              <EditContactsModal id={it.id}/>
                           </TableCell>
                           <TableCell component="th" scope="row" align="center">
                               <Button
                   variant="contained"
                   color="primary"
                   onClick={() => {
-                    dispatch( deleteContact( id ) )
+                    dispatch( deleteContact( it.id ) )
                   }}
                 >
                                   Delete
