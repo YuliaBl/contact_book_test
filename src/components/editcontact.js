@@ -66,7 +66,7 @@ const EditContactsModal = ( props ) => {
           <FormControl className={classes.margin}>
               <Input
           placeholder={editedContact[ 0 ].name}
-          value={name || editedContact[ 0 ].name}
+          value={name}
           onChange={( e ) => {
             setName( e.target.value )
           }}
@@ -75,7 +75,7 @@ const EditContactsModal = ( props ) => {
           <FormControl className={classes.margin}>
               <Input
           placeholder={editedContact[ 0 ].lastname}
-          value={lastname || editedContact[ 0 ].lastname}
+          value={lastname}
           onChange={( e ) => {
             setLastname( e.target.value )
           }}
@@ -84,7 +84,7 @@ const EditContactsModal = ( props ) => {
           <FormControl className={classes.margin}>
               <Input
           placeholder={editedContact[ 0 ].phone}
-          value={phone || editedContact[ 0 ].phone}
+          value={phone}
           onChange={( e ) => {
             setPhone( e.target.value )
           }}
@@ -93,7 +93,7 @@ const EditContactsModal = ( props ) => {
           <FormControl className={classes.margin}>
               <Input
           placeholder={editedContact[ 0 ].email}
-          value={email || editedContact[ 0 ].email}
+          value={email}
           onChange={( e ) => {
             setEmail( e.target.value )
           }}
