@@ -36,6 +36,10 @@ const useStyles = makeStyles( ( theme ) => ( {
 
 const EditContactsModal = ( props ) => {
   const id = props.id
+  const oldName = props.name
+  const oldLastname = props.lastname
+  const oldPhone = props.phone
+  const oldEmail = props.email
   const classes = useStyles()
   const [ modalStyle ] = React.useState( getModalStyle )
   const [ open, setOpen ] = React.useState( false )
@@ -44,10 +48,10 @@ const EditContactsModal = ( props ) => {
   const editedContact = contacts.filter( ( it ) => ( it.id === id ? it : null ) )
 
   const dispatch = useDispatch()
-  const [ name, setName ] = useState( '' )
-  const [ lastname, setLastname ] = useState( '' )
-  const [ phone, setPhone ] = useState( '' )
-  const [ email, setEmail ] = useState( '' )
+  const [ name, setName ] = useState( oldName )
+  const [ lastname, setLastname ] = useState( oldLastname )
+  const [ phone, setPhone ] = useState( oldPhone )
+  const [ email, setEmail ] = useState( oldEmail )
 
   const handleOpen = () => {
     setOpen( true )

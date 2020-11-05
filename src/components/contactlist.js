@@ -50,9 +50,10 @@ const ContactList = () => {
       <div>
           <FormControl className={classes.margin}>
               <Input
-          placeholder="SEARCH"
+          placeholder="Search"
           value={query}
-          onChange={( e ) => {setQuery( e.target.value )
+          onChange={( e ) => {
+            setQuery( e.target.value )
           }}
         />
           </FormControl>
@@ -84,7 +85,7 @@ const ContactList = () => {
                                   {it.email}
                               </TableCell>
                               <TableCell component="th" scope="row" align="center">
-                                  <EditContactsModal id={it.id} />
+                                  <EditContactsModal id={it.id} name={it.name} lastname={it.lastname} phone={it.phone} email={it.email} />
                               </TableCell>
                               <TableCell component="th" scope="row" align="center">
                                   <Button
