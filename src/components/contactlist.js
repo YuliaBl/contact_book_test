@@ -61,12 +61,24 @@ const ContactList = () => {
               <Table className={classes.table} aria-label="simple table">
                   <TableHead>
                       <TableRow variant="h4">
-                          <TableCell align="center">Name</TableCell>
-                          <TableCell align="center">Last Name</TableCell>
-                          <TableCell align="center">Phone</TableCell>
-                          <TableCell align="center">E-mail</TableCell>
-                          <TableCell align="center">Edit</TableCell>
-                          <TableCell align="center">Delete</TableCell>
+                          <TableCell align="center" variant="h4">
+                              Name
+                          </TableCell>
+                          <TableCell align="center" variant="h4">
+                              Last Name
+                          </TableCell>
+                          <TableCell align="center" variant="h4">
+                              Phone
+                          </TableCell>
+                          <TableCell align="center" variant="h4">
+                              E-mail
+                          </TableCell>
+                          <TableCell align="center" variant="h4">
+                              Edit
+                          </TableCell>
+                          <TableCell align="center" variant="h4">
+                              Delete
+                          </TableCell>
                       </TableRow>
                   </TableHead>
                   <TableBody>
@@ -85,7 +97,13 @@ const ContactList = () => {
                                   {it.email}
                               </TableCell>
                               <TableCell component="th" scope="row" align="center">
-                                  <EditContactsModal id={it.id} name={it.name} lastname={it.lastname} phone={it.phone} email={it.email} />
+                                  <EditContactsModal
+                    id={it.id}
+                    name={it.name}
+                    lastname={it.lastname}
+                    phone={it.phone}
+                    email={it.email}
+                  />
                               </TableCell>
                               <TableCell component="th" scope="row" align="center">
                                   <Button
